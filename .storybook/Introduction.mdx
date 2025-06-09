@@ -1,0 +1,86 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Introducción" />
+
+# Documentación del Proyecto Challenge Movie
+
+## Estructura del Proyecto
+
+Este proyecto está organizado siguiendo un patrón de diseño basado en componentes, con una estructura de carpetas clara y modular. La organización actual sigue estos principios:
+
+### Estructura de Carpetas
+
+```
+src/
+├── components/         # Componentes reutilizables
+│   ├── Button/        # Componentes básicos de UI
+│   ├── CustomIcon/    # Componentes de iconografía
+│   ├── Layout/        # Componentes de estructura
+│   ├── Movies/        # Componentes específicos de películas
+│   └── ...            # Otros componentes
+├── hooks/             # Custom hooks
+├── services/          # Servicios y llamadas a API
+├── types/             # Definiciones de tipos TypeScript
+└── utils/             # Utilidades y helpers
+```
+
+### Patrón de Diseño de Componentes
+
+El proyecto sigue un enfoque híbrido que combina elementos del Atomic Design con una organización por dominio:
+
+- **Componentes Atómicos**: Componentes básicos como `Button`, `CustomIcon`, `Image`
+- **Componentes Moleculares**: Combinaciones de componentes atómicos como `CategoryTabs`
+- **Componentes de Dominio**: Componentes específicos del negocio como `Movies`, `HeroBanner`
+- **Componentes de Layout**: Componentes estructurales como `Layout`, `ErrorBoundary`
+
+## Elección de TailwindCSS
+
+TailwindCSS fue seleccionado como sistema de estilos por las siguientes razones:
+
+1. **Productividad**: Permite un desarrollo rápido mediante clases utilitarias predefinidas
+2. **Consistencia**: Proporciona un sistema de diseño coherente con espaciado, colores y tipografía estandarizados
+3. **Mantenibilidad**: Reduce la necesidad de escribir CSS personalizado, minimizando la duplicación de código
+4. **Rendimiento**: Genera solo el CSS necesario para los componentes utilizados
+5. **Flexibilidad**: Permite personalización a través del archivo `tailwind.config.js`
+
+## Convenciones de Desarrollo
+
+### Nomenclatura de Componentes
+
+- Los componentes utilizan PascalCase para sus nombres
+- Los archivos de componentes siguen el patrón `ComponentName.tsx`
+- Los archivos de historias siguen el patrón `ComponentName.stories.tsx`
+
+### Estructura de Componentes
+
+Cada componente típicamente incluye:
+
+- Un archivo principal del componente (`.tsx`)
+- Un archivo de historias (`.stories.tsx`)
+- Un archivo de tipos (`.types.ts`) cuando es necesario
+- Un archivo de estilos (`.module.css`) si se requiere CSS específico
+
+### Buenas Prácticas
+
+1. **Componentes Funcionales**: Se utilizan componentes funcionales con hooks de React
+2. **TypeScript**: Todo el código está tipado para mejor mantenibilidad
+3. **Props Interface**: Cada componente define claramente su interfaz de props
+4. **Documentación**: Los componentes incluyen JSDoc para documentar props y comportamiento
+5. **Testing**: Los componentes incluyen pruebas unitarias cuando es necesario
+
+## Guía de Uso de Storybook
+
+Esta documentación está organizada por categorías:
+
+- **Introducción**: Esta página y documentación general
+- **Componentes**: Documentación detallada de cada componente
+- **Hooks**: Documentación de hooks personalizados
+- **Utilidades**: Documentación de funciones utilitarias
+
+Cada componente incluye:
+
+- Descripción general
+- Props y sus tipos
+- Ejemplos de uso
+- Variaciones disponibles
+- Consideraciones de accesibilidad
