@@ -82,8 +82,8 @@ const mockMovie: Movie = {
   title: "Película de Ejemplo",
   overview:
     "Esta es una descripción de ejemplo para la película. Muestra información sobre la trama y los personajes principales.",
-  poster_path: "/example-poster.jpg",
-  backdrop_path: "/example-backdrop.jpg",
+  poster_path: "https://img.aullidos.com/imagenes/noticias/tw-35564.jpg",
+  backdrop_path: "https://img.aullidos.com/imagenes/noticias/tw-35564.jpg",
   genre_ids: [28, 12, 878],
   vote_average: 8.5,
   vote_count: 1000,

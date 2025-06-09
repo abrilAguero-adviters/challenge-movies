@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { http, HttpResponse } from "msw";
 import { ContinueWatching } from "./ContinueWatching";
 
 const meta: Meta<typeof ContinueWatching> = {
@@ -67,76 +68,77 @@ type Story = StoryObj<typeof ContinueWatching>;
 
 export const Default: Story = {
   parameters: {
-    mockData: [
-      {
-        url: "*/movie/now_playing*",
-        method: "GET",
-        status: 200,
-        response: {
-          results: Array.from({ length: 2 }, (_, index) => ({
-            id: index + 1,
-            title: `Película en Progreso ${index + 1}`,
-            overview: "Esta es una descripción de ejemplo para la película.",
-            poster_path: "/example-poster.jpg",
-            backdrop_path: "/example-backdrop.jpg",
-            genre_ids: [28, 12, 878],
-            vote_average: 8.5,
-            vote_count: 1000,
-            adult: false,
-            original_language: "es",
-            original_title: `Película en Progreso ${index + 1}`,
-            popularity: 1000,
-            video: false,
-            release_date: "2024-01-01",
-          })),
-        },
-      },
-    ],
+    msw: {
+      handlers: [
+        http.get("*/movie/now_playing*", () => {
+          return HttpResponse.json({
+            results: Array.from({ length: 2 }, (_, index) => ({
+              id: index + 1,
+              title: `Película en Progreso ${index + 1}`,
+              overview: "Esta es una descripción de ejemplo para la película.",
+              poster_path:
+                "https://img.aullidos.com/imagenes/noticias/tw-35564.jpg",
+              backdrop_path:
+                "https://img.aullidos.com/imagenes/noticias/tw-35564.jpg",
+              genre_ids: [28, 12, 878],
+              vote_average: 8.5,
+              vote_count: 1000,
+              adult: false,
+              original_language: "es",
+              original_title: `Película en Progreso ${index + 1}`,
+              popularity: 1000,
+              video: false,
+              release_date: "2024-01-01",
+            })),
+          });
+        }),
+      ],
+    },
   },
 };
 
 export const Loading: Story = {
   parameters: {
-    mockData: [
-      {
-        url: "*/movie/now_playing*",
-        method: "GET",
-        status: 200,
-        delay: 2000,
-        response: {
-          results: [],
-        },
-      },
-    ],
+    msw: {
+      handlers: [
+        http.get("*/movie/now_playing*", async () => {
+          await new Promise((resolve) => setTimeout(resolve, 2000));
+          return HttpResponse.json({
+            results: [],
+          });
+        }),
+      ],
+    },
   },
 };
 
 export const Empty: Story = {
   parameters: {
-    mockData: [
-      {
-        url: "*/movie/now_playing*",
-        method: "GET",
-        status: 200,
-        response: {
-          results: [],
-        },
-      },
-    ],
+    msw: {
+      handlers: [
+        http.get("*/movie/now_playing*", () => {
+          return HttpResponse.json({
+            results: [],
+          });
+        }),
+      ],
+    },
   },
 };
 
 export const Error: Story = {
   parameters: {
-    mockData: [
-      {
-        url: "*/movie/now_playing*",
-        method: "GET",
-        status: 500,
-        response: {
-          error: "Error al cargar las películas en reproducción",
-        },
-      },
-    ],
+    msw: {
+      handlers: [
+        http.get("*/movie/now_playing*", () => {
+          return new HttpResponse(
+            JSON.stringify({
+              error: "Error al cargar las películas en reproducción",
+            }),
+            { status: 500 }
+          );
+        }),
+      ],
+    },
   },
 };
