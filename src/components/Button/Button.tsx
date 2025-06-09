@@ -24,15 +24,15 @@ export const Button = ({
     : "bg-dark-secondary text-white border border-gray-700 hover:bg-dark-tertiary";
 
   const sizeClass = useMemo(() => {
-    let size = "text-base px-4 py-2";
+    let sizeClass = "text-base px-4 py-2";
 
     if (size === "small") {
-      size = "text-xs px-2 py-1";
+      sizeClass = "text-xs px-2 py-1";
     } else if (size === "large") {
-      size = "text-lg px-6 py-3";
+      sizeClass = "text-lg px-6 py-3";
     }
 
-    return size;
+    return sizeClass;
   }, [size]);
 
   return (
