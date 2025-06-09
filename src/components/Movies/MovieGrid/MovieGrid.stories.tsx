@@ -1,11 +1,28 @@
 import type { Movie } from "@/common/types/movie";
 import type { Meta, StoryObj } from "@storybook/react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MovieGrid } from "./MovieGrid";
+
+// Mock de los hooks de React Query
+const mockQueryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+    },
+  },
+});
 
 const meta: Meta<typeof MovieGrid> = {
   title: "Componentes/Movies/MovieGrid",
   component: MovieGrid,
   tags: ["autodocs"],
+  decorators: [
+    (Story) => (
+      <QueryClientProvider client={mockQueryClient}>
+        <Story />
+      </QueryClientProvider>
+    ),
+  ],
   argTypes: {
     movies: {
       description: "Array de películas a mostrar en la cuadrícula",
@@ -18,7 +35,7 @@ const meta: Meta<typeof MovieGrid> = {
       description: "Indica si las películas están cargando",
       table: {
         type: { summary: "boolean" },
-        defaultValue: { summary: false },
+        defaultValue: { summary: "false" },
       },
     },
     onMovieClick: {
@@ -39,7 +56,7 @@ const meta: Meta<typeof MovieGrid> = {
       description: "Indica si hay más películas para cargar",
       table: {
         type: { summary: "boolean" },
-        defaultValue: { summary: false },
+        defaultValue: { summary: "false" },
       },
     },
   },

@@ -5,6 +5,7 @@ Una aplicación web moderna de películas estilo Netflix construida con React, T
 ## ✨ Características Principales
 
 ### 🎭 Interfaz Netflix-Style
+
 - **Header con navegación**: Menú de navegación con estados activos
 - **Hero Banner**: Película destacada con información detallada
 - **Sidebar dinámico**: Con botón toggle para ocultar/mostrar
@@ -12,6 +13,7 @@ Una aplicación web moderna de películas estilo Netflix construida con React, T
 - **Popular Movies**: Grid de películas populares con hover interactivo
 
 ### 🔧 Funcionalidades Avanzadas
+
 - **Controles siempre visibles**: En sección "Continue Watching"
 - **Hover descriptions**: Descripción de películas al hacer hover
 - **Responsive design**: Adaptable a todos los tamaños de pantalla
@@ -19,6 +21,7 @@ Una aplicación web moderna de películas estilo Netflix construida con React, T
 - **Fallback images**: Imágenes por defecto para posters rotos
 
 ### 🚀 Tecnologías Utilizadas
+
 - **React 18** + **TypeScript** - Base de la aplicación
 - **React Query** - Manejo de estado y cache de datos
 - **Tailwind CSS** - Estilos utilitarios
@@ -26,6 +29,7 @@ Una aplicación web moderna de películas estilo Netflix construida con React, T
 - **Vite** - Build tool y desarrollo rápido
 
 ### 📦 Arquitectura del Proyecto
+
 ```
 src/
 ├── components/          # Componentes reutilizables
@@ -46,17 +50,20 @@ src/
 ## 🎯 Nuevas Funcionalidades Implementadas
 
 ### 1. Sidebar Toggle
+
 - ✅ Botón para ocultar/mostrar sidebar
 - ✅ Transición suave con animación
 - ✅ Icono que rota según el estado
 
 ### 2. Continue Watching Mejorado
+
 - ✅ Controles siempre visibles (play, pause, progreso)
 - ✅ Descripción de película en hover con delay
 - ✅ Carga lazy de detalles de película
 - ✅ Indicador de loading para descripción
 
 ### 3. Popular Movies Optimizado
+
 - ✅ Tamaño de tarjetas reducido para coincidir con el diseño
 - ✅ Botones de play más pequeños
 - ✅ Mejor distribución responsive
@@ -64,16 +71,18 @@ src/
 ## 🛠️ Instalación y Uso
 
 ### Prerrequisitos
+
 - Node.js (v16 o superior)
 - npm o yarn
 
 ### Instalación
+
 ```bash
 # Clonar el repositorio
 git clone <tu-repositorio>
 
 # Navegar al directorio
-cd challenge-movie
+cd challenge-movies
 
 # Instalar dependencias
 npm install
@@ -83,13 +92,16 @@ cp .env.example .env
 ```
 
 ### Configuración
+
 1. Obtén tu API key de [TMDB](https://www.themoviedb.org/settings/api)
 2. Agrega tu API key en el archivo `.env`:
+
 ```
 VITE_TMDB_API_KEY=tu_api_key_aqui
 ```
 
 ### Desarrollo
+
 ```bash
 # Iniciar servidor de desarrollo
 npm run dev
@@ -112,17 +124,20 @@ npm run preview
 ## 🎨 Características de UI/UX
 
 ### Sidebar Dinámico
+
 - Botón toggle para ocultar/mostrar
 - Transición suave de 300ms
 - Estado persistente durante la sesión
 
 ### Continue Watching
+
 - Controles siempre visibles con overlay
 - Hover description con delay de 500ms
 - Progress bar animada
 - Avatares de usuarios simulados
 
 ### Popular Movies
+
 - Grid responsivo con tamaños optimizados
 - Hover effects con scale y transform
 - Lazy loading de imágenes
@@ -154,6 +169,7 @@ Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más det
 ## 🎬 Demo
 
 La aplicación incluye:
+
 - Datos reales de películas de TMDB
 - Interfaz completamente responsive
 - Animaciones y transiciones suaves
@@ -162,4 +178,4 @@ La aplicación incluye:
 
 ---
 
-Desarrollado con ❤️ usando React, TypeScript y TMDB API 
+Desarrollado con ❤️ usando React, TypeScript y TMDB API

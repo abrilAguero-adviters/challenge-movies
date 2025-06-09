@@ -1,5 +1,6 @@
+import { render } from "@/common/tests/test-utils";
 import type { Movie } from "@/common/types/movie";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { MovieGrid } from "./MovieGrid";
 
@@ -38,21 +39,39 @@ const mockMovies: Movie[] = [
   },
 ];
 
+// Mock del hook useGenresQuery
+vi.mock("@/common/hooks/useMoviesQuery", () => ({
+  useGenresQuery: () => ({
+    data: {
+      genres: [
+        { id: 1, name: "Action" },
+        { id: 2, name: "Drama" },
+        { id: 3, name: "Comedy" },
+        { id: 4, name: "Thriller" },
+      ],
+    },
+  }),
+}));
+
 describe("MovieGrid", () => {
   it("renders movies correctly", () => {
     render(<MovieGrid movies={mockMovies} />);
 
-    expect(screen.getByText("Movie 1")).toBeInTheDocument();
-    expect(screen.getByText("Movie 2")).toBeInTheDocument();
+    // Usar getAllByText para manejar elementos duplicados
+    const movie1Titles = screen.getAllByText("Movie 1");
+    const movie2Titles = screen.getAllByText("Movie 2");
+    expect(movie1Titles).toHaveLength(2); // Hay dos elementos por película
+    expect(movie2Titles).toHaveLength(2);
   });
 
   it("shows loading state", () => {
     render(<MovieGrid movies={[]} loading={true} />);
 
-    expect(screen.getByText("Cargando películas...")).toBeInTheDocument();
-    expect(
-      screen.getByRole("progressbar", { hidden: true })
-    ).toBeInTheDocument();
+    // El CustomLoader muestra elementos skeleton
+    const skeletonElements = screen
+      .getAllByRole("generic")
+      .filter((el) => el.className.includes("animate-pulse"));
+    expect(skeletonElements.length).toBeGreaterThan(0);
   });
 
   it("shows load more button when hasMore is true", () => {
@@ -78,8 +97,26 @@ describe("MovieGrid", () => {
     const mockOnMovieClick = vi.fn();
     render(<MovieGrid movies={mockMovies} onMovieClick={mockOnMovieClick} />);
 
-    fireEvent.click(screen.getByText("Movie 1"));
+    // Hacer clic en el primer contenedor de película
+    const firstMovieContainer = screen
+      .getAllByText("Movie 1")[0]
+      .closest('div[class*="pointer"]');
+    fireEvent.click(firstMovieContainer!);
 
     expect(mockOnMovieClick).toHaveBeenCalledWith(mockMovies[0]);
+  });
+
+  it("does not show load more button when hasMore is false", () => {
+    render(<MovieGrid movies={mockMovies} hasMore={false} />);
+
+    expect(screen.queryByText("Cargar más películas")).not.toBeInTheDocument();
+  });
+
+  it("renders correct number of movie cards", () => {
+    render(<MovieGrid movies={mockMovies} />);
+
+    // Verificar que se renderizan las imágenes de las películas
+    expect(screen.getByAltText("Movie 1")).toBeInTheDocument();
+    expect(screen.getByAltText("Movie 2")).toBeInTheDocument();
   });
 });
