@@ -50,7 +50,7 @@ type Story = StoryObj<typeof CustomIcon>;
 
 export const Default: Story = {
   args: {
-    src: "https://via.placeholder.com/24",
+    src: "https://img.aullidos.com/imagenes/noticias/tw-35564.jpg",
     size: 24,
     alt: "Icono de ejemplo",
   },
@@ -58,7 +58,7 @@ export const Default: Story = {
 
 export const Large: Story = {
   args: {
-    src: "https://via.placeholder.com/48",
+    src: "https://img.aullidos.com/imagenes/noticias/tw-35564.jpg",
     size: 48,
     alt: "Icono grande",
   },
@@ -66,7 +66,7 @@ export const Large: Story = {
 
 export const WithCustomClass: Story = {
   args: {
-    src: "https://via.placeholder.com/32",
+    src: "https://img.aullidos.com/imagenes/noticias/tw-35564.jpg",
     size: 32,
     alt: "Icono con clase personalizada",
     imgClassName: "rounded-full opacity-75 hover:opacity-100",

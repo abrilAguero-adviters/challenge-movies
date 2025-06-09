@@ -51,7 +51,7 @@ type Story = StoryObj<typeof Image>;
 
 export const Default: Story = {
   args: {
-    src: "https://via.placeholder.com/400x600",
+    src: "https://img.aullidos.com/imagenes/noticias/tw-35564.jpg",
     alt: "Imagen de ejemplo",
     className: "w-64 h-96",
   },
@@ -59,9 +59,9 @@ export const Default: Story = {
 
 export const WithCustomFallback: Story = {
   args: {
-    src: "https://via.placeholder.com/400x600",
+    src: "https://img.aullidos.com/imagenes/noticias/tw-35564.jpg",
     alt: "Imagen con fallback personalizado",
-    fallbackSrc: "https://via.placeholder.com/400x600/ff0000/ffffff",
+    fallbackSrc: "https://img.aullidos.com/imagenes/noticias/tw-35564.jpg",
     className: "w-64 h-96",
   },
 };
@@ -76,7 +76,7 @@ export const WithError: Story = {
 
 export const WithCustomClasses: Story = {
   args: {
-    src: "https://via.placeholder.com/400x600",
+    src: "https://img.aullidos.com/imagenes/noticias/tw-35564.jpg",
     alt: "Imagen con clases personalizadas",
     className:
       "w-64 h-96 rounded-lg shadow-lg hover:scale-105 transition-transform",
